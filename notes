@@ -1,0 +1,49 @@
+notes
+
+/data/db
+  cli: mongod
+
+app.js
+  app.listen(port, () => {});
+  mongoose.connect()
+    mongodb://localhost:27017/{db_name}
+
+npm install jest
+package.json: "test": "jest --watchAll"
+  for test, export a PORT different from the server
+  export NODE_ENV to the test env so it accesses different mongo db
+
+npm install config
+  set up custom db for mongo for prod and test in config dir
+
+models/
+  const userSchema = mongoose.model('User', new mongoose.Schema({}));
+
+export PORT=3000
+export NODE_ENV=""
+
+
+bugs of stupidity
+/ before endpoint
+make sure endpoint is spelled correctly (s)
+start and end server each test
+delete all models after each test
+toHaveProperty, not hasOwnProperty
+can add model with
+  new Model({});
+  model.save();
+
+  model.collection.insertMany([{},{}])
+
+model.find() returns an array
+model.findById() returns a model object
+
+always need to call res.send for async await
+
+
+mistakes: 
+async await on beforeEach and afterEach
+model.find() returns array of models
+/ in front of api/users endpoint
+model.findByIdAndUpdate(id, { properties }, { new: true }) // returned value is updated
+put needs to update only values that are defined
